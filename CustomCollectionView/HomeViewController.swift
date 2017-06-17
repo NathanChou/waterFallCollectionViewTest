@@ -12,31 +12,33 @@ import AVFoundation
 
 class HomeViewController: UICollectionViewController,PinterestLayoutDelegate {
     
-    let documentsFilePath = "\(NSHomeDirectory())/Documents/Data.plist";
+    
     
     //MARK: - default data
     var imageArray = [UIImage]();
     var labelWord:[String] = [];
     
     
-    var appdelegate:AppDelegate!;
-    //var imageAll2:[UIImage] = [];
-    
     @IBOutlet var aCollectionView: UICollectionView!
     
 
+    //appdelegate
+    var appdelegate:AppDelegate!;
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //共享appdelegate
         appdelegate = UIApplication.shared.delegate as! AppDelegate;
         
         
+        
+        //default data 測試waterFallLayout
         imageInit();
         labelInit();
         
 
-        
-        
+        //waterFallLayout;
         (aCollectionView.collectionViewLayout as! PinterestLayout).delegate = self;
         aCollectionView!.contentInset = UIEdgeInsets(top: 23, left: 5, bottom: 10, right: 5)
         aCollectionView!.backgroundColor = UIColor.darkGray;
@@ -51,7 +53,7 @@ class HomeViewController: UICollectionViewController,PinterestLayoutDelegate {
     
     
     
-    //MARK: - default data func
+    //MARK: - default word 測試waterFallLayout
     func labelInit(){
         var count = 1;
         for _ in 1...20{
@@ -61,7 +63,7 @@ class HomeViewController: UICollectionViewController,PinterestLayoutDelegate {
             count += 1;
         }
     }
-    
+    //MARK: - default image 測試waterFallLayout
     func imageInit(){
         var count = 1;
         for _ in 1...20{
@@ -74,7 +76,7 @@ class HomeViewController: UICollectionViewController,PinterestLayoutDelegate {
     }
     
     
-    
+    //抓到圖片的高度
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath, withWidth: CGFloat) -> CGFloat {
         
         let image = imageArray[indexPath.row];
