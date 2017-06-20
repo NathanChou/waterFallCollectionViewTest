@@ -38,46 +38,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        let myPath = NSDictionary(contentsOfFile: documentsFilePath) as! [String:AnyObject];
-        
-        let session = URLSession.shared;
-        if let dic = myPath["albumFile"]{
-            let strs = dic as? [String];
-            for str in strs!{
-                var url:URL!;
-                
-                if str == ""{
-                    url = URL(string: "http://www.sirdp.org.tw/images/nopic.jpg");
-                }else{
-                    url = URL(string: str);
-                }
-                let downloadTask:URLSessionDownloadTask = session.downloadTask(with: url, completionHandler: { (url:URL?, response:URLResponse?, error:Error?) in
-                    if error != nil{
-                        print("連線有問題");
-                        return;
-                    }
-                    
-                    if (response as? HTTPURLResponse)?.statusCode != 200{
-                        print("123123");
-                        return;
-                    }
-                    
-                    if url != nil{
-                        if let receiveData = try? Data(contentsOf:url!){
-                            if let image = UIImage(data: receiveData){
-                                DispatchQueue.main.async {
-                                    self.imageAll.append(image);
-                                }
-                            }
-                        }
-                    }
-                })
-                downloadTask.resume();
-                
-            }
-            
-            
-        }
+//        let myPath = NSDictionary(contentsOfFile: documentsFilePath) as! [String:AnyObject];
+//
+//        let session = URLSession.shared;
+//        if let dic = myPath["albumFile"]{
+//            let strs = dic as? [String];
+//            for str in strs!{
+//                var url:URL!;
+//
+//                if str == ""{
+//                    url = URL(string: "http://www.sirdp.org.tw/images/nopic.jpg");
+//                }else{
+//                    url = URL(string: str);
+//                }
+//                let downloadTask:URLSessionDownloadTask = session.downloadTask(with: url, completionHandler: { (url:URL?, response:URLResponse?, error:Error?) in
+//                    if error != nil{
+//                        print("連線有問題");
+//                        return;
+//                    }
+//
+//                    if (response as? HTTPURLResponse)?.statusCode != 200{
+//                        print("123123");
+//                        return;
+//                    }
+//
+//                    if url != nil{
+//                        if let receiveData = try? Data(contentsOf:url!){
+//                            if let image = UIImage(data: receiveData){
+//                                DispatchQueue.main.async {
+//                                    self.imageAll.append(image);
+//                                }
+//                            }
+//                        }
+//                    }
+//                })
+//                downloadTask.resume();
+//
+//            }
+//
+//
+//        }
         
 
 
